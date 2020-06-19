@@ -1,0 +1,15 @@
+{% load static %}
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+<div class="col-xs-1" align="center">
+<h2>
+<br><br><br><br><br><br>
+{% for choice in question.choice_set.all %}
+    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+{% endfor %}
+
+<br>
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+<br>
+<a href="{% url 'polls:index'%}">Go to main menu?</a>
+<h2>
